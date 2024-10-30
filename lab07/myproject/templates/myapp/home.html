@@ -1,0 +1,20 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="{% url 'home' %}" method="post">
+        {% csrf_token %}
+        <label for="data">Input your message:</label>
+        <input type="text" name="data" id="data" required>
+        <button type="submit">Generate QR Code</button>
+    </form>
+
+    {% if qr_uri %}
+        <h2>Generated QR Code for: "{{ data }}"</h2>
+        <img src="{{ qr_uri }}" alt="QR Code">
+    {% endif %}
+</body>
+</html>
