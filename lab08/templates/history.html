@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NASA APOD - History</title>
+</head>
+<body>
+    <h1>Search APOD by Date</h1>
+    <form method="post">
+        <label for="date">Select a Date:</label>
+        <input type="date" id="date" name="date" max="{{ max_date }}" required>
+        <button type="submit">Show Image</button>
+    </form>
+
+    {% if apod %}
+        <h2>Astronomy Picture of the Day for {{ date }}</h2>
+        <img src="{{ apod.url }}" alt="APOD image for {{ date }}">
+        <p>{{ apod.explanation }}</p>
+        <p>Copyright: {{ apod.copyright or 'Public Domain' }}</p>
+    {% endif %}
+    
+    <a href="/">Back to Today’s Image</a>
+</body>
+</html>
